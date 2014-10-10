@@ -1,0 +1,34 @@
+html{
+  height: 100%;
+}
+
+body {
+  padding: 15px 30px;
+  min-height: 100%;
+  height: 100%;
+}
+
+.table tbody tr th {
+  text-align: right;
+  width: 200px;
+}
+
+#accordion a {
+  display: block;
+  text-decoration: none;
+}
+
+#accordion a:hover {
+  text-decoration: none;
+}
+
+.fixed-height {
+  overflow-y: auto;
+  min-height: 100%;
+  height: 500px;
+}
+
+pre {
+  border: 0;
+  background-color: inherit;
+}

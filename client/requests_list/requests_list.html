@@ -1,0 +1,11 @@
+<template name="requests_list">
+  <div class="list-group">
+    {{#each requests}}
+      <a href="#" id="{{_id}}" class="list-group-item {{active}}">
+        <span class="label label-info">{{method}}</span>
+        <span>{{path}}</span>
+        <span class="badge pull-right">{{duration}}</span>
+      </a>
+    {{/each}}
+  </div>
+</template>

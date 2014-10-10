@@ -1,0 +1,147 @@
+<template name="request_details">
+  {{#if request}}       
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#details-info">
+              <span class="label label-info">{{request.method}}</span>
+              {{request.path}}
+              <span class="badge pull-right">{{request.duration}}</span>
+            </a>
+          </h4>
+        </div>
+        <div id="details-info" class="panel-collapse collapse in">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Request method</th>
+                  <td>{{request.method}}</td>
+                </tr>
+                <tr>
+                  <th>Request path</th>
+                  <td>{{request.path}}</td>
+                </tr>
+                <tr>
+                  <th>Response code</th>
+                  <td>{{request.return_code}}</td>
+                </tr>
+                <tr>
+                  <th>Request IP</th>
+                  <td>{{request.ip}}</td>
+                </tr>
+                <tr>
+                  <th>Request duration</th>
+                  <td>{{request.duration}}</td>
+                </tr>
+                <tr>
+                  <th>Processing by</th>
+                  <td>{{request.controller}}#{{request.controller_method}}</td>
+                </tr>
+                <tr>
+                  <th>Response format</th>
+                  <td>{{request.response_format}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      
+      {{#if request.parameters}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#details-parameters">
+                Parameters
+              </a>
+            </h4>
+          </div>
+          <div id="details-parameters" class="panel-collapse collapse">
+            <pre>{{json_formatter request.parameters}}</pre>
+          </div>
+        </div>
+      {{/if}}
+      
+      {{#if request.sql_queries.length}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#details-sql-queries">
+                SQL Queries <span class="badge pull-right">{{request.sql_queries.length}}</span>
+              </a>
+            </h4>
+          </div>
+          <div id="details-sql-queries" class="panel-collapse collapse list-group">
+            {{#each request.sql_queries}}
+              <div class="list-group-item">
+                <h5><span class="badge">{{duration}}</span> {{model}}</h5> 
+                <pre>{{query}}</pre>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+      
+      {{#if request.solr_queries.length}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#details-solr-queries">
+                SOLR Queries <span class="badge pull-right">{{request.solr_queries.length}}</span>
+              </a>
+            </h4>
+          </div>
+          <div id="details-solr-queries" class="panel-collapse collapse list-group">
+            {{#each request.solr_queries}}
+              <div class="list-group-item">
+                <h5><span class="badge">{{duration}}</span></h5> 
+                <pre>{{query}}</pre>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+      
+      {{#if request.templates.length}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#details-templates">
+                Templates <span class="badge pull-right">{{request.templates.length}}</span>
+              </a>
+            </h4>
+          </div>
+          <div id="details-templates" class="panel-collapse collapse list-group">
+            {{#each request.templates}}
+              <div class="list-group-item">
+                <h5><span class="badge">{{duration}}</span> {{template_path}}</h5> 
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+      
+      {{#if request.deface_messages.length}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#details-deface-messages">
+                Deface <span class="badge pull-right">{{request.deface_messages.length}}</span>
+              </a>
+            </h4>
+          </div>
+          <div id="details-deface-messages" class="panel-collapse collapse list-group">
+            {{#each request.deface_messages}}
+              <div class="list-group-item">
+                <h5>{{message}}</h5> 
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+      
+    </div>
+  {{else}}
+    Select something
+  {{/if}}
+</template>
