@@ -32,3 +32,7 @@ pre {
   border: 0;
   background-color: inherit;
 }
+
+.header {
+  padding: 15px 0;
+}
