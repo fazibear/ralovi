@@ -7,6 +7,7 @@
             <a data-toggle="collapse" data-parent="#accordion" href="#details-info">
               <span class="label label-info">{{request.method}}</span>
               {{request.path}}
+              <span class="badge pull-right">{{request.duration_details}}</span>
               <span class="badge pull-right">{{request.duration}}</span>
             </a>
           </h4>
@@ -33,6 +34,10 @@
                 <tr>
                   <th>Request duration</th>
                   <td>{{request.duration}}</td>
+                </tr>
+                <tr>
+                  <th>Request duration details</th>
+                  <td>{{request.duration_details}}</td>
                 </tr>
                 <tr>
                   <th>Processing by</th>

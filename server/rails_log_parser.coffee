@@ -14,6 +14,7 @@ class RailsLogParser
     callback: (match) ->
       @data['return_code'] = match[1]
       @data['duration'] = match[2]
+      @data['duration_details'] = match[3]
       
       @callback.call(this, @data)
       @data = {}
