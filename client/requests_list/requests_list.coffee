@@ -8,5 +8,5 @@ Template.requests_list.active = ->
 
 Template.requests_list.events
   'click a': (event) ->
-    Session.set('request_id', event.target.id)
+    Session.set('request_id', event.currentTarget.id)
   
